@@ -35,9 +35,11 @@ You only need to add **3 elements** to the HTML document to get yourself started
 1. an initialization script:
   ```js
   var poppy = new Poppy(),
-      confirm = poppy.confirm("Do you copy?");
+      alert = poppy.alert("Watch out!"),
+      congratulate = poppy.alert("Congratulations!", "success"),
+      confirm = poppy.confirm("Do you copy?"),
+      prompt = poppy.prompt("What's you name", "Albert");
 
-  ...
   // Hook both success/failure handlers in one go.
   confirm.then(fulfill, reject);
   ...
