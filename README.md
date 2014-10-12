@@ -7,9 +7,10 @@ The lightest & fastest alternative to native browser popups.
 ## Features
 * **Zero dependencies:** who needs jQuery/Prototype/Backbone for a simple popup library?
 * **Ultra-light:** only **1.79kB** gzipped! Poppy's core logic is really small!
+* **Promises pattern:** to handle users's inputs, just hook into Poppy's promises using the `.then` method.
+* **.destroy() method:** need to get rid of Poppy? It will get out of your way in the cleanest possible way.
 * **JS & basic CSS in the same file:** The minimum CSS rules required for the scaffolding of the popups is pre-included in the `.js` file (an extra CSS theme file needs to be supplied to adjust it to your tastes).
 * **Theming via external file:** no need to overwrite any CSS rule because the look doesn't match your property. The library comes with no theme at all. You are free to create you own or use the default one in the repo.
-* **.destroy() method:** need to get rid of Poppy? It will get out of your way in the cleanest possible way.
 
 ## Limitations
 * Browser support: IE9+ and modern browsers only. This is more a design choice as making the library work on older browser would have brought its weight up significantly.
@@ -35,6 +36,16 @@ You only need to add **3 elements** to the HTML document to get yourself started
   ```js
   var poppy = new Poppy(),
       confirm = poppy.confirm("Do you copy?");
+
+  ...
+  // Hook both success/failure handlers in one go.
+  confirm.then(fulfill, reject);
+  ...
+  // Just hook the success handler.
+  confirm.then(function (promptValue?) {...});
+  ...
+  // Just hook the failure handler.
+  confirm.then(null, function () {...});
   ```
 
 Your final HTML code should look like that:
