@@ -25,11 +25,7 @@ function Poppy (cfg) {
 var PoppyPrototype = Poppy.prototype;
 
 PoppyPrototype.fallback = function () {
-    controller = {
-        alert: new NativeModal().alert,
-        confirm: new NativeModal().confirm,
-        prompt: new NativeModal().prompt
-    };
+    controller = new NativeModal();
     return controller;
 };
 
