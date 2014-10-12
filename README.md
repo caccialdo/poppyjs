@@ -1,4 +1,4 @@
-<img src="https://lh4.googleusercontent.com/-4SaGqkHVgT4/VDpxWioIsTI/AAAAAAAAVaU/L1rd3qVcBp4/w1246-h1600-no/remembrance_poppy.jpg" height="150"/>
+<img src="https://lh6.googleusercontent.com/-xaqyhrkS28k/VDp2lC5qfYI/AAAAAAAAVbA/IH1ckexg68c/w392-h600-no/poppy.jpg" height="150"/>
 
 # Poppy.js
 
