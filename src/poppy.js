@@ -123,10 +123,10 @@ PoppyPrototype.confirm = function (message) {
     return new Modal(cfg);
 };
 
-PoppyPrototype.prompt = function (message, defaultValue) {
+PoppyPrototype.prompt = function (message, value) {
     var cfg = {
         body: message,
-        value: defaultValue,
+        value: value,
         buttons: [
             {label: "Cancel", action: "cancel"},
             {label: "Okay", action: "ok"}
