@@ -1,0 +1,57 @@
+.color(@color: dodgerblue) {
+  @hue: hue(@color);
+  @sat: saturation(@color);
+  @lightness: (unit(lightness(@color)) / 100);
+
+  .lighten(@x) {
+    @new: hsl(@hue, @sat, @lightness + @x * (1 - @lightness));
+  }
+  .darken(@x) {
+    @new: hsl(@hue, @sat, @lightness - @x * @lightness);
+  }
+
+  .lighten(.95);
+  background: @new;
+  border-top: 12px solid @color;
+  box-shadow: 0 5px 1px -4px @color;
+
+  input[type=text] {
+    background: white;
+    .darken(.4);
+    color: @new;
+    .lighten(.2);
+    box-shadow: 0 0 2px @new;
+
+    &:hover {
+      .lighten(.1);
+      box-shadow: 0 0 2px @new;
+    }
+    &:focus {
+      box-shadow: 0 0 2px @color;
+    }
+  }
+
+  button {
+    color: @color;
+    .lighten(.8);
+    background: @new;
+
+    &[data-action=cancel] {
+      background: none;
+      &:not(:hover) {
+        color: @color;
+      }
+    }
+
+    &:hover {
+      .lighten(.7);
+      background: @new;
+    }
+    &:active {
+      .lighten(.6);
+      background: @new;
+      .lighten(.1);
+      box-shadow: 0 0 2px @new;
+    }
+  }
+}

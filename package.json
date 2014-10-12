@@ -1,0 +1,25 @@
+{
+  "name": "poppyjs",
+  "description": "A zero-depencies & lightweight modal library.",
+  "version": "0.0.1",
+  "author": "Arnaud Ceccaldi <caccialdo@gmail.com>",
+  "repository": "caccialdo/poppyjs",
+  "keywords": [
+    "poppyjs",
+    "poppy",
+    "modal",
+    "popup",
+    "alert",
+    "vanilla"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "less": "1.7.5",
+    "uglify-js": "2.4.15",
+    "watchy": "0.5.3"
+  },
+  "scripts": {
+    "start": "node_modules/.bin/watchy -w src -- '/bin/bash build.sh'",
+    "gzip-size": "/usr/bin/gzip -c build/poppy.min.js | wc -c"
+  }
+}
