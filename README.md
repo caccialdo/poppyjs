@@ -6,7 +6,8 @@ The lightest & fastest alternative to native browser popups.
 
 ## Features
 * **Zero dependencies:** who needs jQuery/Prototype/Backbone for a simple popup library?
-* **Ultra-light:** only **1.79kB** gzipped! Poppy's core logic is really small!
+* **Graceful degradation:** If your browser is not supported, no worries, the same code will trigger the native popups instead.
+* **Ultra-light:** only **1.89kB** gzipped! Poppy's core logic is really small!
 * **Promises pattern:** to handle users's inputs, just hook into Poppy's promises using the `.then` method.
 * **.destroy() method:** need to get rid of Poppy? It will get out of your way in the cleanest possible way.
 * **JS & basic CSS in the same file:** The minimum CSS rules required for the scaffolding of the popups is pre-included in the `.js` file (an extra CSS theme file needs to be supplied to adjust it to your tastes).
