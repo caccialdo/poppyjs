@@ -23,8 +23,8 @@ POPPY_MIN_CSS=$(cat "build/poppy.min.css")
 sed -e "s/{{poppy\.min\.css}}/${POPPY_MIN_CSS}/g" "src/poppy.js" > "build/poppy.tmp.js"
 
 # Minifies JS assets
-$UGLIFY "src/utils.js" "src/modal.js" "build/poppy.tmp.js" --enclose --preamble "/* $LICENSE */" --beautify > "build/poppy.js"
-$UGLIFY "src/utils.js" "src/modal.js" "build/poppy.tmp.js" --enclose --preamble "/* $LICENSE */" --compress --mangle --screw-ie8 > "build/poppy.min.js"
+$UGLIFY "src/utils.js" "src/modal.js" "src/nativeModal.js" "build/poppy.tmp.js" --enclose --preamble "/* $LICENSE */" --beautify > "build/poppy.js"
+$UGLIFY "src/utils.js" "src/modal.js" "src/nativeModal.js" "build/poppy.tmp.js" --enclose --preamble "/* $LICENSE */" --compress --mangle --screw-ie8 > "build/poppy.min.js"
 
 # Cleanup build folder
 rm "build/poppy.tmp.js" "build/poppy.min.css"

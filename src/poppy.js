@@ -6,7 +6,7 @@ var styleTag, overlay, modals, count, controller, handles;
 function Poppy (cfg) {
     if (controller) return controller;
 
-    if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
+    if (browserIsNotSupported(window.navigator)) return this.fallback();
 
     cfg = cfg || {};
     this.cfg = {
@@ -23,6 +23,15 @@ function Poppy (cfg) {
 }
 
 var PoppyPrototype = Poppy.prototype;
+
+PoppyPrototype.fallback = function () {
+    controller = {
+        alert: new NativeModal().alert,
+        confirm: new NativeModal().confirm,
+        prompt: new NativeModal().prompt
+    };
+    return controller;
+};
 
 PoppyPrototype.injectStyle = function () {
     styleTag = document.createElement("style");
