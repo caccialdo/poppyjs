@@ -102,10 +102,34 @@
     ModalPrototype.destroy = function() {
         overlay.removeChild(this.node);
     };
+    function NativeModal() {
+        return this;
+    }
+    var NativeModalPrototype = NativeModal.prototype;
+    NativeModalPrototype.alert = function(message) {
+        this.value = window.alert(message);
+        return this;
+    };
+    NativeModalPrototype.confirm = function(message) {
+        this.value = window.confirm(message);
+        return this;
+    };
+    NativeModalPrototype.prompt = function(message, value) {
+        this.value = window.prompt(message, value);
+        return this;
+    };
+    NativeModalPrototype.then = function(fulfill, reject) {
+        var value = this.value, isString = typeof value === "string";
+        if (value === null || value === false) {
+            execute(reject);
+        } else {
+            execute(fulfill, [ isString ? value : undefined ]);
+        }
+    };
     var styleTag, overlay, modals, count, controller, handles;
     function Poppy(cfg) {
         if (controller) return controller;
-        if (browserIsNotSupported(window.navigator)) throw new Error("Your browser is not supported.");
+        if (browserIsNotSupported(window.navigator)) return this.fallback();
         cfg = cfg || {};
         this.cfg = {
             theme: cfg.theme || "default"
@@ -119,6 +143,10 @@
         return this;
     }
     var PoppyPrototype = Poppy.prototype;
+    PoppyPrototype.fallback = function() {
+        controller = new NativeModal();
+        return controller;
+    };
     PoppyPrototype.injectStyle = function() {
         styleTag = document.createElement("style");
         styleTag.type = "text/css";
@@ -199,10 +227,10 @@
         };
         return new Modal(cfg);
     };
-    PoppyPrototype.prompt = function(message, defaultValue) {
+    PoppyPrototype.prompt = function(message, value) {
         var cfg = {
             body: message,
-            value: defaultValue,
+            value: value,
             buttons: [ {
                 label: "Cancel",
                 action: "cancel"
